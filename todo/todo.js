@@ -32,8 +32,14 @@ function loadDB() {
 
 }
 
-function getTasksList() {
+function getTasksList(completed) {
     loadDB();
+
+    if (completed === 'true' || completed === 'false') {
+        return todoList.filter((task) => {
+            return `${task.completed}` === completed;
+        });
+    }
     return todoList;
 }
 

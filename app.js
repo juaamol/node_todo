@@ -10,8 +10,7 @@ switch (command) {
         console.log(task);
         break;
     case 'list':
-        let list = getTasksList();
-
+        let list = getTasksList(argv.listcompleted);
         for (let task of list) {
             console.log('====== Tasks to do ====='.green);
             console.log(task.description);

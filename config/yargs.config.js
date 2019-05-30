@@ -7,13 +7,19 @@ const description = {
 const completed = {
     demand: true,
     alias: 'c',
-    desc: 'Marks the task as finished'
+    desc: 'Task status'
+};
+
+const listcompleted = {
+    demand: false,
+    alias: 'l',
+    desc: 'If true, shows only completed tasks, else non completed tasks.'
 };
 
 const argv = require('yargs')
     .command(
         'create', 'Create a task to do', {
-            description
+            description,
         })
     .command(
         'update', 'Update the state of a task', {
@@ -22,7 +28,11 @@ const argv = require('yargs')
         })
     .command(
         'delete', 'Delete a task', {
-            description
+            description,
+        })
+    .command(
+        'list', 'Lists tasks', {
+            listcompleted,
         })
     .help().argv;
 
