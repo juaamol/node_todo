@@ -37,7 +37,34 @@ function getTasksList() {
     return todoList;
 }
 
+function updateTask(description, completed = true) {
+    loadDB();
+    for (let task of todoList) {
+        if (task.description === description) {
+            task.completed = completed;
+        };
+    }
+    saveDB();
+}
+
+function deleteTask(description) {
+    loadDB();
+
+    howManyBeforeDeletion = todoList.length;
+    todoList = todoList.filter((task) => task.description !== description);
+
+    deletedSuccesfully = todoList.length !== howManyBeforeDeletion;
+
+    if (deletedSuccesfully) {
+        saveDB();
+    }
+
+    return deletedSuccesfully;
+}
+
 module.exports = {
     createTask,
     getTasksList,
+    updateTask,
+    deleteTask,
 };
