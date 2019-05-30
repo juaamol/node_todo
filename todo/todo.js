@@ -6,7 +6,7 @@ function createTask(description) {
     loadDB();
     let todo = {
         description,
-        todo: false,
+        completed: false,
     };
 
     todoList.push(todo);
@@ -32,6 +32,12 @@ function loadDB() {
 
 }
 
+function getTasksList() {
+    loadDB();
+    return todoList;
+}
+
 module.exports = {
-    createTask
+    createTask,
+    getTasksList,
 };
